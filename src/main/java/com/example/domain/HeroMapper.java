@@ -1,9 +1,7 @@
 package com.example.domain;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +18,10 @@ public interface HeroMapper {
     Hero selectById(@Param("id") int id);
 
     int insertHero(@Param("p_hero") Hero hero);
+
+    @Insert("insert into hero(id,name) values(null,#{p_hero.name})")
+    @SelectKey(statement = "select last_insert_id()",keyProperty = "id",before = false,resultType = int.class)
+    int insertHeroByAnnotation(@Param("p_hero") Hero hero);
 
     int insertBatch(@Param("heroes") List<Hero> heroes);
 

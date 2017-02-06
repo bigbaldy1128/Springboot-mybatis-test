@@ -18,6 +18,6 @@ public class HeroDao {
 
     public Hero selectByName(String name)
     {
-        return sqlSession.selectOne("selectByName",name);
+        return this.sqlSession.selectOne("selectByName",name);
     }
 }
