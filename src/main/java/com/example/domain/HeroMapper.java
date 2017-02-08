@@ -20,8 +20,12 @@ public interface HeroMapper {
     int insertHero(@Param("p_hero") Hero hero);
 
     @Insert("insert into hero(id,name) values(null,#{p_hero.name})")
-    @SelectKey(statement = "select last_insert_id()",keyProperty = "id",before = false,resultType = int.class)
+    @Options(useGeneratedKeys = true,keyProperty = "p_hero.id")
     int insertHeroByAnnotation(@Param("p_hero") Hero hero);
+
+    @Insert("insert into hero(id,name) values(null,#{p_hero.name})")
+    @SelectKey(statement = "select @@IDENTITY",keyProperty = "p_hero.id",before = false,resultType = int.class)
+    int insertHeroByAnnotation2(@Param("p_hero") Hero hero);
 
     int insertBatch(@Param("heroes") List<Hero> heroes);
 

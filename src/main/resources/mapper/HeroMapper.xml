@@ -8,7 +8,7 @@
     </select>
 
     <insert id="insertHero">
-        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        <selectKey keyProperty="p_hero.id" order="AFTER" resultType="int">
             SELECT @@IDENTITY
         </selectKey>
         INSERT INTO hero(name) VALUES (#{p_hero.name})

@@ -46,7 +46,7 @@ public class MybatisDemoApplicationTests {
     public void insertHero() {
         Hero hero = new Hero();
         hero.setName("wjz");
-        heroMapper.insertHero(hero);
+        heroMapper.insertHeroByAnnotation2(hero);
         logger.info("插入的Id:" + hero.getId());
     }
 
