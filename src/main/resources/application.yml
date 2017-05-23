@@ -5,4 +5,5 @@ spring:
     password: ct123!@#
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
-  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/HeroMapper.xml
+#  config-location: classpath:mybatis-config.xml

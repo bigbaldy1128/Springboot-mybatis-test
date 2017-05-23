@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  * Created by wangjinzhao on 2017/2/6.
  */
 @Mapper
+@Transactional
 public interface HeroMapper {
     Hero selectByName(@Param("name") String name);
 
